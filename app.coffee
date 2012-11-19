@@ -12,9 +12,8 @@
 #
 
 # Setup
-youtubedl = require('youtube-dl')
-uri       = require('url')
 request   = require('request')
+childProc = require('child_process')
 FeedParser = require('feedparser')
 parser = new FeedParser()
 
@@ -58,28 +57,12 @@ download = (url, callback) ->
     callback?()
     return
 
-  dl = youtubedl.download(url, './videos', youtubeArgs)
-
-  dl.on 'download', (data) ->
-    console.log('Download started')
-    console.log('filename: ' + data.filename)
-    console.log('size: ' + data.size)
-
-  dl.on 'progress', (data) ->
-    process.stdout.write(data.eta + ' ' + data.percent + '% at ' + data.speed + '\r')
-
-  dl.on 'error', (err) ->
-    throw err
-
-  dl.on 'end', (data) ->
-    console.log('\nDownload finished!')
-    console.log('Filename: ' + data.filename)
-    console.log('Size: ' + data.size)
-    console.log('Time Taken: ' + data.timeTaken)
-    console.log('Time Taken in ms: ' + data.timeTakenms)
-    console.log('Average Speed: ' + data.averageSpeed)
-    console.log('Average Speed in Bytes: ' + data.averageSpeedBytes)
-    callback() if callback
+  cwd = process.cwd()
+  path = "#{cwd}/scripts/download.sh"
+  childProc.execFile path, [url], stdio: 'inherit', (err, out) ->
+    console.log err
+    console.log out
+    callback?()
 
 
 # Work
