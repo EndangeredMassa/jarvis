@@ -1,0 +1,248 @@
+.vertical {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#layout {
+  position: relative;
+  padding-left: 300px;
+}
+#nav,
+#list {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#nav {
+  background: #333;
+  color: #eee;
+  width: 300px;
+  height: 100%;
+  margin-left: -550px;
+  z-index: 200;
+  padding: 1em 0;
+  text-align: center;
+}
+#nav #submitting {
+  margin: 15px 0 0 100px;
+  text-align: center;
+  display: none;
+  height: 20px;
+  width: 20px;
+}
+#nav #add_source {
+  text-align: left;
+  margin-left: 15px;
+  width: 230px;
+}
+#nav #add_source input[type='submit'],
+#nav #add_source button {
+  margin-top: 15px;
+  width: 100%;
+  font-size: 80%;
+}
+#nav #add_source button.success-message {
+  padding: 5px;
+  height: auto;
+  background: #0078e7;
+  color: #eee;
+}
+#nav #add_source button.error-message {
+  padding: 5px;
+  height: auto;
+  background: #c17036;
+  color: #eee;
+}
+#nav .nav-inner {
+  possition: relative;
+  width: 50px;
+  float: right;
+  height: 100%;
+}
+#nav .nav-inner .login {
+  bottom: 0;
+  height: 50%;
+  padding: 5px 0 100px 0;
+  width: 50px;
+  position: absolute;
+  background: #8fb299;
+}
+#nav .nav-inner .login .login-icons {
+  position: absolute;
+  bottom: 95px;
+  width: 100%;
+}
+#nav .nav-inner .login a {
+  display: block;
+  margin: 5px 0;
+  color: #eee;
+}
+#nav .nav-inner .login h2 {
+  color: #eee;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 40px;
+  left: -12px;
+  margin: 0 auto;
+}
+#nav .nav-inner .login h2.demo {
+  top: 34px;
+  bottom: auto;
+  height: auto;
+}
+#nav button {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+#nav h1 {
+  margin-top: 85px;
+}
+#toolbar {
+  background: rgba(245,245,245,0.75);
+  border-radius: 3px 3px 3px 3px;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  padding: 5px 0 3px 5px;
+}
+#toolbar a {
+  color: #999;
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+  white-space: nowrap;
+}
+#toolbar iframe {
+  width: 115px;
+  height: 25px;
+}
+#list {
+  background: #eee;
+  width: 250px;
+  margin-left: -250px;
+  padding-top: 0;
+}
+#info {
+  background: #333;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  height: 45px;
+  margin-top: 0;
+  padding: 10px 0 5px;
+  font-size: 75%;
+}
+#info p {
+  color: #c17036;
+  margin: 0;
+  padding: 6px 0 6px 10px;
+  float: left;
+}
+#info p span.unread {
+  color: #8fb299;
+}
+#info button {
+  display: none;
+  float: right;
+  margin-right: 5px;
+}
+ul.items {
+  list-style: none;
+  padding: 0;
+  margin: 50px 0 0;
+}
+ul.items li {
+  width: 250px;
+  border-right: 5px solid #c17036;
+  margin: 5px 0;
+  background: #fff;
+  font-size: 0.8em;
+}
+ul.items li.unread {
+  border-right: 5px solid #8fb299;
+  color: #649171;
+}
+ul.items li.unread a {
+  color: #649171;
+}
+ul.items li.selected {
+  background: #eee;
+  border-right: 5px solid #333;
+}
+ul.items li.selected a {
+  color: #333;
+}
+ul.items li a {
+  display: block;
+  text-decoration: none;
+  color: #c17036;
+  padding: 5px 10px;
+  width: 100%;
+  height: 100%;
+}
+ul.items li h4 {
+  margin: 0;
+  padding: 0;
+}
+ul.items li p {
+  margin: 0;
+  padding: 0;
+}
+#list_footer {
+  position: fixed;
+  bottom: 0;
+  background: #8fb299;
+  height: 45px;
+  width: 250px;
+}
+#list_footer p {
+  color: #eee;
+  font-size: 85%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+#main {
+  padding: 2em;
+}
+.item-content a {
+  text-decoration: none;
+  color: #649171;
+}
+#pipe_info {
+  padding-left: 15px;
+  border-left: 5px solid #8fb299;
+}
+#pipe_info dt {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+#pipe_info dt .pipe-example {
+  text-transform: none;
+  font-weight: 200;
+  font-size: 80%;
+}
+#pipe_info dd {
+  margin: 0 0 10px 0;
+}
+#default {
+  text-align: right;
+}
+.logo {
+  margin: 15px 0;
+  font-size: 8em;
+  letter-spacing: -3px;
+}

@@ -1,0 +1,15 @@
+extends layout
+
+block head
+  script(type='text/javascript', src='/javascripts/index.js')
+
+block content
+  div#layout.pure-g-r.content
+    div#nav.pure-u
+      div.nav-inner
+    div#list.pure-u-1
+    div#main.pure-u-1
+        h3 Login
+        form
+            a(href="/auth/twitter").pure-button.pure-button-primary Sign in with Twitter
+            a(href="/auth/facebook").pure-button.pure-button-primary Sign in with Facebook

@@ -1,0 +1,85 @@
+extends layout
+
+block head
+  script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+  script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js')
+  script(type='text/javascript', src='/socket.io/socket.io.js')
+  script(type='text/javascript', src='/javascripts/jkey.min.js')
+  script(type='text/javascript', src='/javascripts/index.js')
+
+block content
+  div#layout.pure-g-r.content
+    div#toolbar.pure-u
+      a(href="http://nodeknockout.com/teams/rockem-sockem") Rock 'em, Sock 'em
+      iframe(src="http://nodeknockout.com/iframe/rockem-sockem", frameborder="0", scrolling="no", allowtransparency="true")
+
+    div#nav.pure-u
+      div.nav-inner
+        button(id="open_drawer", class="pure-button primary-button") +
+        h1.vertical= title
+        div.login
+          h2.vertical.demo="demo"
+          div#login_hide
+            h2.vertical="login"
+            div.login-icons
+              a(href="/auth/facebook", class="login-fb")
+                i.fa.fa-facebook-square.fa-2x
+              a(href="/auth/twitter", class="login-twitter")
+                i.fa.fa-twitter-square.fa-2x
+
+      div#add_source
+        form(method="post", name="add_source", class="pure-form", id="add_source_form", action="/add")
+          input(type="text", name="url", placeholder="http://blog.nodeknockout.com/rss", class="pure-input-1")
+          .extra-options(style="display:none;")='This type requires the following options:'
+          input(type="submit", value="Submit Source").pure-button.pure-button-small
+        img(alt="Submitting", src="/images/loading.gif", id="submitting")
+      input(id="user_id", type="hidden", value=userId)
+    div#list.pure-u-1
+      div#info.clearfix
+        p
+          span.unread
+            span.unread-count 0
+            | &nbsp;Unread&nbsp;
+            | /&nbsp;
+            span.all-count 0
+
+        button(id="new_items").pure-button.pure-button-primary New Items! Refresh
+      ul.items
+        each item in items
+          li(id=item.id, data-item-id=item.id, class=item.read === false ? "unread" : "")
+            a(href="#")
+              h4= item.title
+              p=item.link
+
+
+    div#main.pure-u-1
+      div(id="default")
+        h2.logo="JARVIS"
+        h2="Welcome to Jarvis, your new favorite content aggregator."
+        p="Click the plus at the top left to add a new source. Jarvis will grab all the good stuff and add it the list."
+        p="Sign in using Facebook or Twitter to create your own account!"
+      div(id="drawer_open_info", hidden="true")
+        h2="Adding a new source:"
+        p.
+          To add a new source, paste any url into the form on the left, and submit!
+          Jarvis will watch for any updates!
+        p.
+          The following source types are currently supported:
+        dl#pipe_info
+          each pipe in pipes
+            dt
+              span=pipe.type
+              | &nbsp;&nbsp;&nbsp;<em>
+              span.pipe-example=pipe.example
+              | </em>
+            dd=pipe.description
+
+      each item in items
+        div(id="content_"+item.id, class="item-content", hidden=true)
+          h2
+            a(href=item.url, target="_blank")=item.title
+          a(data-action='remove-item', data-id=item.id, href="#").pure-button.pure-button-error Remove
+          p.timestamp=item.timestamp
+          .content
+            !{item.content}
+
