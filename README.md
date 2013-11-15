@@ -7,3 +7,6 @@ It can consume way more than RSS.
 
 It's currently deployed at [http://rockem-sockem.2013.nodeknockout.com](http://rockem-sockem.2013.nodeknockout.com).
 
+# license
+
+[MIT](https://github.com/EndangeredMassa/jarvis/blob/master/LICENSE)
